@@ -1,0 +1,25 @@
+<div>
+  <% if @groups.empty? %>
+    <h3>There are no transactions here</h3>
+  <% else %>
+    <div id="groups">
+      <% @groups.each do |group| %>
+        <h1><%= group.name %></h1>
+        <%= link_to group_path(group),
+           class: "view-link",
+           form: { class: 'delete-form' } do %>
+            <i class="fa-solid fa-eye"></i>
+          <% end %>
+
+        <%= button_to group_path(group),
+          method: :delete,
+          data: { turbolinks_confirm: 'Delete this recipe?' },
+          class: 'btn-back',
+          form: { class: 'delete-form' } do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to "New Category", new_group_path, class: 'categories-button' %>
+</div>
