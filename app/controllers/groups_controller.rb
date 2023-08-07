@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @categories = %w[Studies Housing Transportation Food Utilities Clothing Healthcare Entertainment
-    Household Personal Miscellaneous]
+    Personal Savings]
   end
 
   def show
