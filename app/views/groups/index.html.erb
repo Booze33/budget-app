@@ -11,6 +11,10 @@
             <i class="fa-solid fa-eye"></i>
           <% end %>
 
+          <a href=<%= "/groups/#{group.id}/activities" %> id="group-open">
+        <i class="fa-solid fa-eye"></i>
+      </a>
+
         <%= button_to group_path(group),
           method: :delete,
           data: { turbolinks_confirm: 'Delete this recipe?' },

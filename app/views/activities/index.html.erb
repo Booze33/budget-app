@@ -1,0 +1,13 @@
+<div>
+  <% if @activities.empty? %>
+  <h3>No Activities Here</h3>
+  <% else %>
+  <div>
+    <% @activities.each do |activity| %>
+      <h1><%= activity.name %></h1>
+    <% end %>
+  </div>
+  <% end %>
+  <%= link_to "New Transaction", "/groups/#{@group.id}/activities/new", class: 'categories-button' %>
+  <a href=<%= groups_path %> id="signup-btn">Back <i class="fa-solid fa-arrow-left"></i></i></a>
+</div>
