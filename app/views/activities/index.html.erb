@@ -1,10 +1,12 @@
 <div>
+  <h3>Total Amount: <%= @group.total %></h3>
   <% if @activities.empty? %>
   <h3>No Activities Here</h3>
   <% else %>
   <div>
     <% @activities.each do |activity| %>
       <h1><%= activity.name %></h1>
+      <h2>$<%= activity.amount %></h2>
     <% end %>
   </div>
   <% end %>

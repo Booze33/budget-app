@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @categories = %w[Studies Housing Transportation Food Utilities Clothing Healthcare Entertainment
+    @categories = %w[Studies Housing Transportation Foods Utilities Clothing Healthcare Entertainment
     Personal Savings]
   end
 
