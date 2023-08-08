@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  #root "groups#index"
+  root "welcome#index"
 
   resources :groups do
     resources :activities

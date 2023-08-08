@@ -1,61 +1,50 @@
-<div>
-  <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-outline-danger' %>
+<div class="big-container">
   <% if @groups.empty? %>
-    <h3>There are no transactions here</h3>
+    <h3 class="welcome-p">No categories</h3>
+    <%= image_tag("low.jpg", id: '1690915255103-img', class: 'empty-img') %>
   <% else %>
     <div class="groups">
+      <% group_image_mapping = {
+           'Foods' => 'food.jpg',
+           'Studies' => 'studies.jpg',
+           'Clothing' => 'clothing.jpg',
+           'Healthcare' => 'health.jpg',
+           'Transportation' => 'transportation.jpg',
+           'Utilities' => 'utilities.jpg',
+           'Entertainment' => 'entertainment.jpg',
+           'Housing' => 'housing.jpg',
+           'Savings' => 'savings.jpg',
+           'Personal' => 'personal.png'
+        } %>
+
       <% @groups.each do |group| %>
         <div class="group-container">
           <div>
-            <% if group.name == 'Foods' %>
-              <%= image_tag("food.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Studies' %>
-              <%= image_tag("studies.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Clothing' %>
-              <%= image_tag("clothing.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Healthcare' %>
-              <%= image_tag("health.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Transportation' %>
-              <%= image_tag("transportation.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Utilities' %>
-              <%= image_tag("utilities.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Entertainment' %>
-              <%= image_tag("entertainment.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Housing' %>
-              <%= image_tag("housing.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            
-            <% if group.name == 'Savings' %>
-              <%= image_tag("savings.jpg", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
-            <% if group.name == 'Personal' %>
-              <%= image_tag("personal.png", id: '1690915255103-img', class: 'group-img') %>
-            <% end %>
+            <% image_filename = group_image_mapping[group.name] %>
+            <%= image_tag(image_filename, id: '1690915255103-img', class: 'group-img') if image_filename %>
           </div>
-          <div>
-            <h1><%= group.name %></h1>
-            <a href=<%= "/groups/#{group.id}/activities" %> id="group-open">
-              <i class="fa-solid fa-eye"></i>
+          <div class="group-flex">
+            <div>
+              <h1><%= group.name %></h1>
+              <h3 class="welcome-p">Total Amount: $<%= group.total %></h3>
+            </div>
+            <div class="group-links">
+              <a href="<%= "/groups/#{group.id}/activities" %>" class="btn-back-2">
+              <i class="fa-solid fa-eye fa-dif"></i>
             </a>
 
             <%= button_to group_path(group),
-              method: :delete,
-              data: { turbolinks_confirm: 'Delete this recipe?' },
-              class: 'btn-back',
-              form: { class: 'delete-form' } do %>
-                <i class="fa-solid fa-trash-can"></i>
+                          method: :delete,
+                          data: { turbolinks_confirm: 'Delete this recipe?' },
+                          class: 'btn-back',
+                          form: { class: 'delete-form' } do %>
+              <i class="fa-solid fa-trash-can fa-dif"></i>
             <% end %>
+            </div>
           </div>
         </div>
       <% end %>
     </div>
   <% end %>
-  <%= link_to "New Category", new_group_path, class: 'categories-button' %>
 </div>
+<%= link_to "New Category", new_group_path, class: 'categories-button' %>

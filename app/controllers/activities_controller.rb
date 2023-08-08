@@ -2,6 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 
     def index
+      @page = 'TRANSACTIONS'
       @group = Group.find(params[:group_id])
       @group_activities = GroupActivity.where(group_id: params[:group_id]).order('created_at DESC')
       @activities = []
@@ -16,6 +17,7 @@ class ActivitiesController < ApplicationController
 
 
   def new
+    @page = 'NEW TRANSACTION'
     @id = params[:group_id]
     @name = Group.find(params[:group_id]).name
     puts @group.inspect

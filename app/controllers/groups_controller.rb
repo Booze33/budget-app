@@ -2,10 +2,12 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show update destroy]
 
   def index
+    @page = 'CATEGORIES'
     @groups = Group.all
   end
 
   def new
+    @page = 'NEW CATEGORY'
     @group = Group.new
     @categories = %w[Studies Housing Transportation Foods Utilities Clothing Healthcare Entertainment
     Personal Savings]
