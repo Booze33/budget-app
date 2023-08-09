@@ -113,6 +113,7 @@ body {
   box-shadow: 0 -5px 3px -3px #000, 0 5px 3px -3px #000;
   display: grid;
   place-items: center;
+  padding-bottom: 1rem;
 }
 
 .field {

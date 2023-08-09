@@ -1,22 +1,22 @@
-<div class="new-post">
+<div class="register-container">
   <%= form_with model: @activity, url: "/groups/#{@id}/activities" do |form| %>
     <div>
         <%= form.label :name, style: "display: block" %>
-        <%= form.text_field :name, required: true %>
+        <%= form.text_field :name, required: true, class: "form-control" %>
       </div>
 
       <div>
         <%= form.label :amount, style: "display: block" %>
-        <%= form.number_field :amount, required: true %>
+        <%= form.number_field :amount, required: true, class: "form-control" %>
       </div>
 
       <div>
         <%= form.label :category, style: "display: block" %>
-        <%= form.text_field :category, required: true, disabled: true, value: @name%>
+        <%= form.text_field :category, required: true, disabled: true, value: @name, class: "form-control"%>
       </div>
 
       <div>
-        <%= form.submit "Add transaction" %>
+        <%= form.submit "Add transaction", class: "submit-btn" %>
       </div>
   <% end %>
   <%= link_to "Back", "/groups/#{@group.id}/activities", class: 'categories-button' %>

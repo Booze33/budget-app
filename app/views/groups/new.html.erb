@@ -1,4 +1,4 @@
-<div>
+<div class="register-container">
   <%= form_with(model: @group) do |form| %>
 
       <div>
@@ -7,12 +7,11 @@
       </div>
 
       <div>
-        <%= form.submit 'Add category' %>
+        <%= form.submit 'Add category', class: "submit-btn" %>
       </div>
-
-      <a href=<%= groups_path %> id="signup-btn">Back <i class="fa-solid fa-arrow-left"></i></i></a>
     <% end %>
   </div>
   <div>
 
 </div>
+<%= link_to "Back", groups_path, class: 'categories-button' %>
