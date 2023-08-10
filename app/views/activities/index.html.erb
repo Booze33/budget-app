@@ -1,0 +1,23 @@
+<div>
+  <h1><%= @group.name %></h1>
+  <h3 class="welcome-p">Total Amount: $<%= @group.total %></h3>
+  <% if @activities.empty? %>
+  <h3>No Activities Here</h3>
+  <%= image_tag("low.jpg", id: '1690915255103-img', class: 'empty-img') %>
+  <% else %>
+  <div>
+    <% @activities.each do |activity| %>
+      <div class="activity">
+        <div>
+          <%= image_tag("transactions.webp", id: '1690915255103-img', class: 'empty-img') %>
+        </div>
+        <div class="activity-container">
+          <h2 class="h2"><%= activity.name %></h2>
+          <h3 class="welcome-p">$<%= activity.amount %></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+<%= link_to "New Transaction", "/groups/#{@group.id}/activities/new", class: 'categories-button' %>

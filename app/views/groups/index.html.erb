@@ -1,0 +1,52 @@
+<div class="big-container">
+  <% if @groups.empty? || can?(:create, Group) %>
+    <h3 class="welcome-p">No categories</h3>
+    <%= image_tag("low.jpg", id: '1690915255103-img', class: 'empty-img') %>
+  <% else %>
+    <div class="groups">
+      <% group_image_mapping = {
+           'Foods' => 'food.jpg',
+           'Studies' => 'studies.jpg',
+           'Clothing' => 'clothing.jpg',
+           'Healthcare' => 'health.jpg',
+           'Transportation' => 'transportation.jpg',
+           'Utilities' => 'utilities.jpg',
+           'Entertainment' => 'entertainment.jpg',
+           'Housing' => 'housing.jpg',
+           'Savings' => 'savings.jpg',
+           'Personal' => 'personal.png'
+        } %>
+
+      <% @groups.each do |group| %>
+        <% if can?(:read, group) %>
+          <div class="group-container">
+            <div>
+              <% image_filename = group_image_mapping[group.name] %>
+              <%= image_tag(image_filename, id: '1690915255103-img', class: 'group-img') if image_filename %>
+            </div>
+            <div class="group-flex">
+              <div>
+                <h1 class="group_name"><%= group.name %></h1>
+                <h3 class="welcome-p">Total Amount: $<%= group.total %></h3>
+              </div>
+              <div class="group-links">
+                <a href="<%= "/groups/#{group.id}/activities" %>" class="btn-back-2">
+                  <i class="fa-solid fa-eye fa-dif"></i>
+                </a>
+
+                  <%= button_to group_path(group),
+                                method: :delete,
+                                data: { turbolinks_confirm: 'Delete this category?' },
+                                class: 'btn-back',
+                                form: { class: 'delete-form' } do %>
+                    <i class="fa-solid fa-trash-can fa-dif"></i>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<%= link_to "New Category", new_group_path, class: 'categories-button' %>

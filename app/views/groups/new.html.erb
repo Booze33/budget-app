@@ -1,0 +1,17 @@
+<div class="register-container">
+  <%= form_with(model: @group) do |form| %>
+
+      <div>
+        <%= form.label :name, style: "display: block" %>
+        <%= form.select :name, @categories, { :include_blank => '-- Select One --' }, class: "form-control", required: true %>
+      </div>
+
+      <div>
+        <%= form.submit 'Add category', class: "submit-btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+
+</div>
+<%= link_to "Back", groups_path, class: 'categories-button' %>
