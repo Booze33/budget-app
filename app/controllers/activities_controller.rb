@@ -1,20 +1,18 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[show edit update destroy]
 
-    def index
-      @page = 'TRANSACTIONS'
-      @group = Group.find(params[:group_id])
-      @group_activities = GroupActivity.where(group_id: params[:group_id]).order('created_at DESC')
-      @activities = []
-      @group_activities.each do |a|
+  def index
+    @page = 'TRANSACTIONS'
+    @group = Group.find(params[:group_id])
+    @group_activities = GroupActivity.where(group_id: params[:group_id]).order('created_at DESC')
+    @activities = []
+    @group_activities.each do |a|
       activity = Activity.find(a.activity_id)
       @activities << activity
     end
   end
 
-  def show
-  end
-
+  def show; end
 
   def new
     @page = 'NEW TRANSACTION'
@@ -26,8 +24,7 @@ class ActivitiesController < ApplicationController
     @activity = @group.activities.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @activity = Activity.new(activity_params)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'groups/show', type: :view do
   let(:user) { User.create(name: 'Test User', email: 'test@example.com', password: 'password') }
-  let(:group) { Group.create(name: 'Food', icon: 'food.jpg', user: user) }
+  let(:group) { Group.create(name: 'Food', icon: 'food.jpg', user:) }
   let(:activity1) { Activity.create(name: 'Lunch', amount: 10, author: user) }
   let(:activity2) { Activity.create(name: 'Dinner', amount: 15, author: user) }
 

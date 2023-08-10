@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'groups/new', type: :view do
   let(:user) { User.create(name: 'Test User', email: 'test@example.com', password: 'password') }
-  let(:categories) { %w[Studies Housing Transportation Foods Utilities Clothing Healthcare Entertainment Personal Savings] }
+  let(:categories) do
+    %w[Studies Housing Transportation Foods Utilities Clothing Healthcare Entertainment Personal Savings]
+  end
 
   before do
     assign(:group, Group.new)

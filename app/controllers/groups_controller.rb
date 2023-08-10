@@ -10,11 +10,10 @@ class GroupsController < ApplicationController
     @page = 'NEW CATEGORY'
     @group = Group.new
     @categories = %w[Studies Housing Transportation Foods Utilities Clothing Healthcare Entertainment
-    Personal Savings]
+                     Personal Savings]
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @group = Group.new(group_params)
