@@ -11,18 +11,21 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_08_09_175636) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
     t.string "name"
     t.float "amount"
-    t.integer "author_id", null: false
+    t.bigint "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_activities_on_author_id"
   end
 
   create_table "group_activities", force: :cascade do |t|
-    t.integer "activity_id", null: false
-    t.integer "group_id", null: false
+    t.bigint "activity_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_group_activities_on_activity_id"
@@ -32,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_09_175636) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "icon"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
